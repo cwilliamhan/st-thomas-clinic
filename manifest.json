@@ -1,0 +1,20 @@
+{
+  "name": "성토마스 병원 | St. Thomas Clinic",
+  "short_name": "성토마스병원",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0f4c81",
+  "theme_color": "#0f4c81",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
