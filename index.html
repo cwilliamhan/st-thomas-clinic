@@ -78,12 +78,17 @@ let e=false, pName="", pPhone="";
 function tl(){e=!e;document.getElementById("lb").innerText=e?"한국어":"English";document.getElementById("cn").innerText=e?"St. Thomas Medical Clinic":"성토마스 병원";document.getElementById("it").innerHTML=e?"📲 Install Clinic App<br>on Home Screen":"📲 스마트폰 바탕화면에<br>성토마스 병원 앱 설치하기";document.getElementById("ib").innerText=e?"Install App":"1초 앱 설치";document.getElementById("ct").innerText=e?"Call Clinic":"전화 연결";document.getElementById("mt").innerText=e?"Directions":"오시는 길"}
 function sq(t){document.getElementById("ui").value=t;sm()}
 function startCam(){
-  const n=prompt("환자분 성함을 입력해 주세요 (예: 김명희):");
-  if(!n)return;
-  const p=prompt("연락처(전화번호)를 입력해 주세요:");
+  document.getElementById("rm").style.display="flex";
+}
+function goCam(){
+  const n=document.getElementById("rn").value.trim();
+  const p=document.getElementById("rp").value.trim();
+  if(!n){alert("환자분 성함을 입력해 주세요.");return;}
   pName=n; pPhone=p||"미입력";
+  document.getElementById("rm").style.display="none";
   document.getElementById("cam").click();
 }
+
 function send(m,img){
   const d=new URLSearchParams();
   d.append("source","app");
