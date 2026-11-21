@@ -56,14 +56,14 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 <div class="chead">🤖 성토마스 24시 AI 안내 비서 <span style="color:#16a34a;font-size:12px">● 온라인</span></div>
 <div class="cmsg" id="cb"><div class="msg mai">안녕하세요! 성토마스 병원 AI 비서입니다. 😊<br><strong>진료 예약, 약통 촬영 처방연장(Refill), 예약 변경</strong>을 도와드립니다.</div></div>
 <div class="chips">
-<button class="chip" onclick="document.getElementById('cam').click()">📷 약통 찍어 처방연장</button>
+<button class="chip" onclick="startCam()">📷 약통 찍어 처방연장</button>
 <button class="chip" onclick="sq('신규 진료 예약하고 싶어요')">🆕 신규 진료 예약</button>
 <button class="chip" onclick="sq('기존 예약 변경 및 일정 확인')">🔄 기존예약 변경/확인</button>
 <button class="chip" onclick="sq('Book an appointment in English')">🇺🇸 English</button>
 </div>
 <div class="ibox">
 <input type="file" id="cam" accept="image/*" capture="environment" style="display:none" onchange="hp(this)">
-<button class="cambtn" onclick="document.getElementById('cam').click()">📷</button>
+<button class="cambtn" onclick="startCam()">📷</button>
 <button class="cambtn" onclick="sv()" id="mb">🎤</button>
 <input type="text" id="ui" class="cin" placeholder="메시지 또는 마이크/카메라..." onkeypress="if(event.key==='Enter')sm()">
 <button class="sbtn" onclick="sm()">↑</button>
