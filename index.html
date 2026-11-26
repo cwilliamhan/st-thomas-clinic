@@ -128,10 +128,11 @@ function startCam(){
 function goCam(){
   const n=document.getElementById("rn").value.trim();
   const p=document.getElementById("rp").value.trim();
-  if(!n){alert("환자분 성함을 입력해 주세요.");return;}
-  pName=n; pPhone=p||"미입력";
+  if(!n){alert(e?"Please enter patient full name.":"환자분 성함을 입력해 주세요.");return;}
+  pName=n; pPhone=p||(e?"Not provided":"미입력");
   document.getElementById("rm").style.display="none";
   document.getElementById("cam").click();
+}
 }
   let bType="", selTime="";
 const bookedSlots=["10:00 AM","01:30 PM","03:00 PM"];
@@ -142,7 +143,17 @@ function openBk(t){bType=t;selTime="";document.getElementById("bt").innerText="�
 
   function renderSlots(){const dt=document.getElementById("bdate").value;const box=document.getElementById("tslots");box.innerHTML="";const st=getDayStatus(dt);if(st.closed){selTime="";box.innerHTML=`<div style="grid-column:1/-1;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;padding:12px;border-radius:10px;font-size:13px;font-weight:700;text-align:center">🚫 ${st.msg}<br><span style="font-weight:400;font-size:12px">${e?"Please select another available date.":"다른 진료일을 선택해 주세요."}</span></div>`;return;}const times=st.sat?["09:00 AM","09:30 AM","10:00 AM","10:30 AM","11:00 AM","11:30 AM","12:00 PM","12:30 PM"]:["09:00 AM","09:30 AM","10:00 AM","10:30 AM","11:00 AM","01:30 PM","02:00 PM","02:30 PM","03:00 PM","03:30 PM","04:00 PM"];times.forEach(tm=>{const isBooked=bookedSlots.includes(tm);const btn=document.createElement("button");btn.innerText=isBooked?tm+(e?" (Booked)":" (마감)"):tm;btn.disabled=isBooked;btn.style.cssText=`padding:9px 4px;border-radius:8px;font-size:12px;font-weight:700;border:1.5px solid ${isBooked?"#e2e8f0":(selTime===tm?"#0f4c81":"#93c5fd")};background:${isBooked?"#f1f5f9":(selTime===tm?"#0f4c81":"#eff6ff")};color:${isBooked?"#94a3b8":(selTime===tm?"#fff":"#0f4c81")};cursor:${isBooked?"not-allowed":"pointer"}`;btn.onclick=()=>{selTime=tm;renderSlots();};box.appendChild(btn);});}
 
-function sendBk(){const n=document.getElementById("bn").value.trim(),p=document.getElementById("bp").value.trim(),dt=document.getElementById("bdate").value;if(!n||!p){alert("성함과 연락처를 입력해 주세요.");return;}if(getDayStatus(dt).closed){alert("휴진일에는 예약할 수 없습니다.");return;}if(!selTime){alert("예약 가능한 시간을 선택해 주세요.");return;}const msg=`📅 [${bType}] 환자: ${n} / 연락처: ${p} / 확정요청일시: ${dt} ${selTime}`;document.getElementById("bm").style.display="none";ab(msg,"musr");send(msg,"");setTimeout(()=>{ab(`✅ <strong>${n}님</strong>의 ${dt} <strong>${selTime}</strong> ${bType} 요청이 데스크로 전송되었습니다! 😊`,"mai")},500);}
+function sendBk(){
+  const n=document.getElementById("bn").value.trim(), p=document.getElementById("bp").value.trim(), dt=document.getElementById("bdate").value;
+  if(!n||!p){alert(e?"Please enter your name and phone number.":"성함과 연락처를 입력해 주세요.");return;}
+  if(getDayStatus(dt).closed){alert(e?"Cannot book on closed days. Please select a business day.":"휴진일에는 예약할 수 없습니다.");return;}
+  if(!selTime){alert(e?"Please select an available time slot.":"예약 가능한 시간을 선택해 주세요.");return;}
+  const msg=`📅 [${bType}] 환자: ${n} / 연락처: ${p} / 확정요청일시: ${dt} ${selTime}`;
+  document.getElementById("bm").style.display="none";
+  ab(e?`📅 [${bType}] Name: ${n} / Phone: ${p} / Requested: ${dt} ${selTime}`:msg,"musr");
+  send(msg,"");
+  setTimeout(()=>{ab(e?`✅ Thank you, <strong>${n}</strong>! Your request for ${dt} at <strong>${selTime}</strong> has been sent to our desk. We will text you to confirm shortly. 😊`:`✅ <strong>${n}님</strong>의 ${dt} <strong>${selTime}</strong> ${bType} 요청이 데스크로 전송되었습니다! 확인 후 확정 문자를 드립니다. 😊`,"mai")},500);
+}
 
 function send(m,img){
   const d=new URLSearchParams();
@@ -164,7 +175,7 @@ function hp(inp){
       const info=`💊 [약통 처방연장] 환자: ${pName} (${pPhone})`;
       ab(`<img src='${smallImg}' style='max-width:100%;border-radius:10px;margin-bottom:4px'><br>${info}`,"musr");
       send(info, smallImg);
-      setTimeout(()=>{ab(`💊 <strong>${pName}님</strong>의 약통 사진과 연락처가 데스크로 한 번에 접수되었습니다! 😊`,"mai")},600);
+      setTimeout(()=>{ab(e?`💊 Thank you, <strong>${pName}</strong>! Your prescription bottle photo and contact info have been sent to our desk. 😊`:`💊 <strong>${pName}님</strong>의 약통 사진과 연락처가 데스크로 한 번에 접수되었습니다! 😊`,"mai")},600);
     };
     im.src=ev.target.result;
   };
