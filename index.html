@@ -45,8 +45,6 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 <h1 id="cn">성토마스 병원</h1>
 <div style="font-size:14px;opacity:.9" id="cs">St. Thomas Medical Clinic • 가정의학·노인의학</div>
 <div class="doc" id="dh">👨‍⚕️ <strong>Dr. Peter K. Chung, DO</strong><br>🕒 평일 9:00 AM - 4:30 PM | 매월 첫째 토요일 9:00 AM - 1:00 PM (일·공휴일 휴진)</div>
-
-
 </header>
 <div class="iban">
 <div style="font-size:13px;color:#0369a1;font-weight:600" id="it">📲 스마트폰 바탕화면에<br>성토마스 병원 앱 설치하기</div>
@@ -55,20 +53,15 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 <div class="qact">
 <a href="tel:6508308223" class="acard">📞 <span id="ct">전화 연결</span></a>
 <a href="#" onclick="window.open('https://www.google.'+'com/maps/search/?api=1&query=1470+Halford+Ave+Santa+Clara+CA+95051','_blank');return false;" class="acard">📍 <span id="mt">오시는 길</span></a>
-
-
 </div>
 <div class="cbox">
 <div class="chead" id="ch">👩‍⚕️ 성토마스 24시 AI 안내 비서 <span style="color:#16a34a;font-size:12px">● 온라인</span></div>
-
 <div class="cmsg" id="cb"><div class="msg mai" id="wm">안녕하세요! 성토마스 병원 AI 비서입니다. 😊<br><strong>진료 예약, 약통 촬영 처방연장(Refill), 예약 변경</strong>을 도와드립니다.</div></div>
-
 <div class="chips">
 <button class="chip" id="c1" onclick="startCam()">📷 약통 찍어 처방연장</button>
 <button class="chip" id="c2" onclick="openBk(e?'New Appointment':'신규 진료 예약')">🆕 신규 진료 예약</button>
 <button class="chip" id="c3" onclick="openBk(e?'Change / Check Appt':'기존예약 변경/확인')">🔄 기존예약 변경/확인</button>
 <button class="chip" id="c4" onclick="tl()">🇺🇸 English</button>
-
 </div>
 <div class="ibox">
 <input type="file" id="cam" accept="image/*" capture="environment" style="display:none" onchange="hp(this)">
@@ -78,6 +71,8 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 <button class="sbtn" onclick="sm()">↑</button>
 </div>
 </div>
+<div class="mod" id="im"><div class="mc"><h3 id="imt" style="margin-bottom:10px;color:#0f4c81">📲 병원 앱 설치 안내</h3><p id="imd" style="font-size:14px;line-height:1.5;margin-bottom:16px"><strong>아이폰:</strong> 하단 [공유 ⬆️] → [홈 화면에 추가]<br><strong>안드로이드:</strong> 우측 상단 [메뉴 ⋮] → [홈 화면에 추가]</p><button id="imc" onclick="document.getElementById('im').style.display='none'" style="background:#0f4c81;color:#fff;border:none;padding:10px;border-radius:10px;width:100%;font-weight:700">확인</button></div></div>
+<div class="mod" id="rm"><div class="mc" style="width:100%"><h3 id="rmt" style="margin-bottom:12px;color:#0f4c81">💊 약통 찍어 처방연장</h3><input type="text" id="rn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="rp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:14px"><button id="rmb" onclick="goCam()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:8px;cursor:pointer">📷 다음: 약통 사진 촬영하기</button><button id="rmc" onclick="document.getElementById('rm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:10px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
 <div class="mod" id="bm"><div class="mc" style="width:100%;text-align:left"><h3 id="bt" style="margin-bottom:10px;color:#0f4c81;text-align:center">📅 진료 예약 접수</h3><input type="text" id="bn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="bp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><div id="bdl" style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">1. 희망 날짜 선택 (달력)</div><input type="date" id="bdate" onchange="renderSlots()" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:10px"><div id="btl" style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">2. 예약 가능 시간 (회색은 예약 마감)</div><div id="tslots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px"></div><button id="bmb" onclick="sendBk()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:6px;cursor:pointer">✅ 선택한 시간으로 예약 접수</button><button id="bmc" onclick="document.getElementById('bm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:9px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
 <script>
 const W="https://"+"hook"+".us2.make."+"com/yhtygrljyvfi3rl16ihv6b9bg1isl543";
@@ -96,7 +91,7 @@ function tl(){
   document.getElementById("ct").innerText=e?"Call Clinic":"전화 연결";
   document.getElementById("mt").innerText=e?"Directions":"오시는 길";
   document.getElementById("ch").innerHTML=e?"👩‍⚕️ St. Thomas 24/7 AI Assistant <span style='color:#16a34a;font-size:12px'>● Online</span>":"👩‍⚕️ 성토마스 24시 AI 안내 비서 <span style='color:#16a34a;font-size:12px'>● 온라인</span>";
-  document.getElementById("wm").innerHTML=e?"Hello! I am the St. Thomas Clinic AI Assistant. 😊<br>I can help with <strong>Appointments, Rx Refills (Photo), and Schedule Changes</strong>.":"안녕하세요! 성토마스 병원 AI 비서입니다. 😊<br><strong>진료 예약, 약통 촬영 처방연장(Refill), 예약 변경</strong>을 도와드립니다.";
+    document.getElementById("wm").innerHTML=e?"Hello! I am the St. Thomas Clinic AI Assistant. 😊<br>I can help with <strong>Appointments, Rx Refills (Photo), and Schedule Changes</strong>.":"안녕하세요! 성토마스 병원 AI 비서입니다. 😊<br><strong>진료 예약, 약통 촬영 처방연장(Refill), 예약 변경</strong>을 도와드립니다.";
   document.getElementById("c1").innerText=e?"📷 Rx Refill (Photo)":"📷 약통 찍어 처방연장";
   document.getElementById("c2").innerText=e?"🆕 New Appointment":"🆕 신규 진료 예약";
   document.getElementById("c3").innerText=e?"🔄 Change / Check Appt":"🔄 기존예약 변경/확인";
@@ -131,7 +126,8 @@ function goCam(){
 function isFirstSat(d){return d.getDay()===6 && d.getDate()<=7;}
 function getDayStatus(dtStr){
   const d=new Date(dtStr+"T00:00:00"), day=d.getDay(), mmdd=dtStr.slice(5);
-  if(holidays[mmdd])return {closed:true,msg:e?`Closed on ${holidays[mmdd]}`:`${holidays[mmdd]} 공휴일 휴진`};
+  const hName=holidays[mmdd];
+  if(hName)return {closed:true,msg:e?`Closed on ${hName}`:`${hName} 공휴일 휴진`};
   if(day===0)return {closed:true,msg:e?"Closed on Sundays":"매주 일요일 휴진"};
   if(day===6){
     if(isFirstSat(d))return {closed:false,sat:true};
@@ -144,10 +140,10 @@ function openBk(t){
   bType=t; selTime="";
   document.getElementById("bt").innerText="📅 "+t;
   const d=new Date(); d.setDate(d.getDate()+1);
-  while(getDayStatus(d.toISOString().split("T")[0]).closed){d.setDate(d.getDate()+1);}
+  while(getDayStatus(d.toISOString().split("T")).closed){d.setDate(d.getDate()+1);}
   const inp=document.getElementById("bdate");
-  inp.min=new Date().toISOString().split("T")[0];
-  inp.value=d.toISOString().split("T")[0];
+  inp.min=new Date().toISOString().split("T");
+  inp.value=d.toISOString().split("T");
   renderSlots();
   document.getElementById("bm").style.display="flex";
 }
@@ -191,7 +187,8 @@ function send(m,img){
 }
 
 function hp(inp){
-  if(!inp.files||!inp.files[0])return;
+  const f=inp.files&&inp.files;
+  if(!f)return;
   const r=new FileReader();
   r.onload=ev=>{
     const im=new Image();
@@ -206,3 +203,44 @@ function hp(inp){
       const wrap=document.createElement("div");
       wrap.appendChild(imgTag);
       wrap.insertAdjacentHTML("beforeend","<br>"+(e?`💊 [Rx Refill] Patient: ${pName} (${pPhone})`:info));
+      const b=document.getElementById("cb"), d=document.createElement("div");
+      d.className="msg musr"; d.appendChild(wrap); b.appendChild(d); b.scrollTop=b.scrollHeight;
+      send(info, smallImg);
+      setTimeout(()=>{ab(e?`💊 Thank you, <strong>${pName}</strong>! Your prescription bottle photo and contact info have been sent to our desk. 😊`:`💊 <strong>${pName}님</strong>의 약통 사진과 연락처가 데스크로 한 번에 접수되었습니다! 😊`,"mai")},600);
+    };
+    im.src=ev.target.result;
+  };
+  r.readAsDataURL(f);
+}
+
+function sv(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){alert(e?"Please use the microphone button on your phone keyboard.":"스마트폰 키보드의 마이크 버튼을 눌러 말씀해 주세요!");return;}
+  const r=new SR(); r.lang=e?"en-US":"ko-KR";
+  const b=document.getElementById("mb"); b.style.background="#fee2e2";
+  r.onresult=ev=>{document.getElementById("ui").value=ev.results.transcript;sm()};
+  r.onend=()=>{b.style.background="#e0f2fe"};
+  r.start();
+}
+
+function sm(){
+  const i=document.getElementById("ui"), t=i.value.trim();
+  if(!t)return;
+  ab(t,"musr"); send(t,""); i.value="";
+  setTimeout(()=>{
+    let r=e?"Thank you! Your message has been sent to our desk. 😊 For urgent matters, please tap [Call Clinic].":"감사합니다! 데스크 담당자에게 전달되었습니다. 😊 급하신 용무는 [전화 연결]을 눌러주세요.";
+    const l=t.toLowerCase();
+    if(l.includes("신규")||l.includes("예약")||l.includes("appointment"))r=e?"📅 Please tap the <strong>[🆕 New Appointment]</strong> button above to pick a date and available time slot!":"📅 위의 <strong>[🆕 신규 진료 예약]</strong> 버튼을 누르시면 달력에서 날짜와 시간을 바로 선택하실 수 있습니다!";
+    else if(l.includes("약")||l.includes("refill"))r=e?"💊 Please tap <strong>[📷 Rx Refill (Photo)]</strong> above to snap a photo of your prescription bottle!":"💊 위의 <strong>[📷 약통 찍어 처방연장]</strong> 버튼을 누르시면 성함 입력 후 바로 촬영하여 한 번에 접수됩니다!";
+    ab(r,"mai");
+  },500);
+}
+
+function ab(t,c){
+  const b=document.getElementById("cb"), d=document.createElement("div");
+  d.className="msg "+c; d.innerHTML=t; b.appendChild(d); b.scrollTop=b.scrollHeight;
+}
+</script>
+</body>
+</html>
+
