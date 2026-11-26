@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>성토마스 병원</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="성토마스병원">
@@ -18,7 +18,7 @@ header{background:linear-gradient(135deg,var(--p),var(--s));color:#fff;padding:2
 .badge{background:rgba(255,255,255,.2);padding:4px 10px;border-radius:12px;font-size:12px}
 .lbtn{background:#fff;color:var(--p);border:none;padding:5px 12px;border-radius:15px;font-size:12px;font-weight:700;cursor:pointer}
 h1{font-size:23px;font-weight:800;margin-bottom:4px}
-.doc{background:rgba(255,255,255,.15);padding:10px 14px;border-radius:12px;font-size:13px;margin-top:10px;line-height:1.5}
+.doc{background:rgba(255,255,255,.15);padding:10px 14px;border-radius:12px;font-size:14px;margin-top:10px;line-height:1.5}
 .iban{background:#e0f2fe;border:1px solid #bae6fd;margin:14px 16px 0;padding:12px 16px;border-radius:14px;display:flex;justify-content:space-between;align-items:center}
 .ibtn{background:#0284c7;color:#fff;border:none;padding:8px 14px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer}
 .qact{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 16px}
@@ -26,17 +26,21 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 .cbox{flex:1;background:#fff;margin:0 16px 16px;border-radius:20px;display:flex;flex-direction:column;overflow:hidden;border:1px solid #e5e7eb}
 .chead{background:#f8fafc;padding:13px 16px;border-bottom:1px solid #e5e7eb;font-weight:700;font-size:14px}
 .cmsg{flex:1;padding:14px;overflow-y:auto;max-height:300px;display:flex;flex-direction:column;gap:10px}
-.msg{max-width:82%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.45}
+.msg{max-width:82%;padding:11px 14px;border-radius:16px;font-size:15px;line-height:1.45}
 .mai{background:#f1f5f9;align-self:flex-start}
 .musr{background:var(--p);color:#fff;align-self:flex-end}
 .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 14px 12px}
-.chip{background:#eff6ff;color:var(--p);border:1.5px solid #93c5fd;padding:12px 8px;border-radius:14px;font-size:14px;font-weight:800;text-align:center;cursor:pointer}
+.chip{background:#eff6ff;color:var(--p);border:1.5px solid #93c5fd;padding:12px 8px;border-radius:14px;font-size:15px;font-weight:800;text-align:center;cursor:pointer}
 .ibox{display:flex;padding:10px;border-top:1px solid #e5e7eb;gap:6px;align-items:center}
 .cambtn{background:#e0f2fe;color:#0369a1;border:none;border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer;flex-shrink:0}
 .cin{flex:1;border:1px solid #d1d5db;border-radius:20px;padding:10px 14px;font-size:14px;min-width:0}
 .sbtn{background:var(--p);color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-weight:700;cursor:pointer;flex-shrink:0}
 .mod{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:20px}
 .mc{background:#fff;padding:24px;border-radius:20px;max-width:340px;text-align:center}
+.info{background:#fff;margin:0 16px 12px;padding:14px 16px;border-radius:16px;border:1px solid #e5e7eb}
+.info h2{font-size:15px;font-weight:800;margin-bottom:6px;color:var(--p)}
+.info p{font-size:14px;line-height:1.8}
+.info .sub{font-size:13px;color:#64748b}
 </style>
 </head>
 <body>
@@ -46,6 +50,7 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 <div style="font-size:14px;opacity:.9" id="cs">St. Thomas Medical Clinic • 가정의학·노인의학</div>
 <div class="doc" id="dh">👨‍⚕️ <strong>Dr. Peter K. Chung, DO</strong><br>🕒 평일 9:00 AM - 4:30 PM | 매월 첫째 토요일 9:00 AM - 1:00 PM (일·공휴일 휴진)</div>
 </header>
+<div style="background:#fef2f2;border:1px solid #fecaca;margin:12px 16px 0;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.5;color:#991b1b" id="emg">🚨 응급 상황(가슴 통증, 호흡 곤란 등)인 경우 <strong>911</strong>에 전화하세요. 이 채팅은 응급 용도가 아닙니다.</div>
 <div class="iban">
 <div style="font-size:13px;color:#0369a1;font-weight:600" id="it">📲 스마트폰 바탕화면에<br>성토마스 병원 앱 설치하기</div>
 <button class="ibtn" onclick="document.getElementById('im').style.display='flex'" id="ib">1초 앱 설치</button>
@@ -71,14 +76,33 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 <button class="sbtn" onclick="sm()">↑</button>
 </div>
 </div>
-<div class="mod" id="im"><div class="mc"><h3 id="imt" style="margin-bottom:10px;color:#0f4c81">📲 병원 앱 설치 안내</h3><p id="imd" style="font-size:14px;line-height:1.5;margin-bottom:16px"><strong>아이폰:</strong> 하단 [공유 ⬆️] → [홈 화면에 추가]<br><strong>안드로이드:</strong> 우측 상단 [메뉴 ⋮] → [홈 화면에 추가]</p><button id="imc" onclick="document.getElementById('im').style.display='none'" style="background:#0f4c81;color:#fff;border:none;padding:10px;border-radius:10px;width:100%;font-weight:700">확인</button></div></div>
-<div class="mod" id="rm"><div class="mc" style="width:100%"><h3 id="rmt" style="margin-bottom:12px;color:#0f4c81">💊 약통 찍어 처방연장</h3><input type="text" id="rn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="rp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:14px"><button id="rmb" onclick="goCam()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:8px;cursor:pointer">📷 다음: 약통 사진 촬영하기</button><button id="rmc" onclick="document.getElementById('rm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:10px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
-<div class="mod" id="bm"><div class="mc" style="width:100%;text-align:left"><h3 id="bt" style="margin-bottom:10px;color:#0f4c81;text-align:center">📅 진료 예약 접수</h3><div id="bsub" style="display:none;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px"><button type="button" id="bs1" onclick="setSub('변경')" style="padding:8px 4px;border-radius:8px;font-size:12px;font-weight:800;border:1.5px solid #0f4c81;background:#0f4c81;color:#fff;cursor:pointer">🔄 예약 변경</button><button type="button" id="bs2" onclick="setSub('일정문의')" style="padding:8px 4px;border-radius:8px;font-size:12px;font-weight:800;border:1.5px solid #93c5fd;background:#eff6ff;color:#0f4c81;cursor:pointer">🔍 예약 일정 문의</button><button type="button" id="bs3" onclick="setSub('취소')" style="padding:8px 4px;border-radius:8px;font-size:12px;font-weight:800;border:1.5px solid #93c5fd;background:#eff6ff;color:#0f4c81;cursor:pointer">❌ 예약 취소</button></div><input type="text" id="bn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="bp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><div id="bdtbox"><div id="bdl" style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">1. 희망 날짜 선택 (달력)</div><input type="date" id="bdate" onchange="renderSlots()" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:10px"><div id="btl" style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">2. 예약 가능 시간 (회색은 예약 마감)</div><div id="tslots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px"></div></div><button id="bmb" onclick="sendBk()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:6px;cursor:pointer">✅ 요청 접수하기</button><button id="bmc" onclick="document.getElementById('bm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:9px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
+<div class="info">
+<h2 id="addrT">📍 오시는 길</h2>
+<p id="addr">1470 Halford Ave #168, Santa Clara, CA 95051</p>
+<p class="sub" id="addrN">주차 가능 · 휠체어 이용 가능</p>
+</div>
+<div class="info">
+<h2 id="svcT">🩺 진료 안내</h2>
+<p id="svcD">가정의학 진료 · 노인 진료 · 예방 검진<br>이민 신체검사 (I-693) · 예방접종 · 혈액검사<br>X-ray · 심전도(EKG) · 초음파<br>신규 환자 환영 · Telehealth(원격진료) 가능</p>
+</div>
+<div class="info">
+<h2 id="insT">🏥 받는 보험</h2>
+<p id="insD">Aetna · Blue Cross Blue Shield · Blue Shield of California<br>UnitedHealthcare · Anthem · Cigna · Humana<br>그 외 주요 보험도 가능합니다.<br><span class="sub">가입하신 보험의 적용 여부는 예약 전 전화로 확인해 주세요.</span></p>
+</div>
+<footer style="padding:4px 20px 22px;font-size:12px;color:#64748b;line-height:1.6;text-align:center">
+<div id="prv">입력하신 이름·연락처·사진은 진료 접수 목적으로만 사용되며 병원 데스크로 전송됩니다.</div>
+<div id="prv2" style="margin-top:4px">접수 후 확인 문자가 오지 않으면 (650) 830-8223으로 전화 주세요.</div>
+<div style="margin-top:6px">© 2026 St. Thomas Medical Clinic</div>
+</footer>
+<div class="mod" id="im" onclick="if(event.target===this)this.style.display='none'"><div class="mc"><h3 id="imt" style="margin-bottom:10px;color:#0f4c81">📲 병원 앱 설치 안내</h3><p id="imd" style="font-size:14px;line-height:1.5;margin-bottom:16px"><strong>아이폰:</strong> 하단 [공유 ⬆️] → [홈 화면에 추가]<br><strong>안드로이드:</strong> 우측 상단 [메뉴 ⋮] → [홈 화면에 추가]</p><button id="imc" onclick="document.getElementById('im').style.display='none'" style="background:#0f4c81;color:#fff;border:none;padding:10px;border-radius:10px;width:100%;font-weight:700">확인</button></div></div>
+<div class="mod" id="rm" onclick="if(event.target===this)this.style.display='none'"><div class="mc" style="width:100%"><h3 id="rmt" style="margin-bottom:12px;color:#0f4c81">💊 약통 찍어 처방연장</h3><input type="text" id="rn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="rp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:14px"><button id="rmb" onclick="goCam()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:8px;cursor:pointer">📷 다음: 약통 사진 촬영하기</button><p id="rnote" style="font-size:12px;color:#64748b;line-height:1.5;margin-bottom:8px">접수 후 확인 문자를 드립니다. 문자가 오지 않으면 (650) 830-8223으로 전화 주세요.</p><button id="rmc" onclick="document.getElementById('rm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:10px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
+<div class="mod" id="bm" onclick="if(event.target===this)this.style.display='none'"><div class="mc" style="width:100%;text-align:left"><h3 id="bt" style="margin-bottom:10px;color:#0f4c81;text-align:center">📅 진료 예약 접수</h3><div id="bsub" style="display:none;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px"><button type="button" id="bs1" onclick="setSub('변경')" style="padding:8px 4px;border-radius:8px;font-size:13px;font-weight:800;border:1.5px solid #0f4c81;background:#0f4c81;color:#fff;cursor:pointer">🔄 예약 변경</button><button type="button" id="bs2" onclick="setSub('일정문의')" style="padding:8px 4px;border-radius:8px;font-size:13px;font-weight:800;border:1.5px solid #93c5fd;background:#eff6ff;color:#0f4c81;cursor:pointer">🔍 예약 일정 문의</button><button type="button" id="bs3" onclick="setSub('취소')" style="padding:8px 4px;border-radius:8px;font-size:13px;font-weight:800;border:1.5px solid #93c5fd;background:#eff6ff;color:#0f4c81;cursor:pointer">❌ 예약 취소</button></div><input type="text" id="bn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="bp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><div id="bdtbox"><div id="bdl" style="font-size:13px;font-weight:700;color:#475569;margin-bottom:4px">1. 희망 날짜 선택 (달력)</div><input type="date" id="bdate" onchange="renderSlots()" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:10px"><div id="btl" style="font-size:13px;font-weight:700;color:#475569;margin-bottom:4px">2. 예약 가능 시간 (회색은 예약 마감)</div><div id="tslots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px"></div></div><button id="bmb" onclick="sendBk()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:6px;cursor:pointer">✅ 요청 접수하기</button><p id="bnote" style="font-size:12px;color:#64748b;line-height:1.5;text-align:center;margin-bottom:8px">접수 후 확인 문자가 오지 않으면 (650) 830-8223으로 전화 주세요.</p><button id="bmc" onclick="document.getElementById('bm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:9px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
 <script>
 const W="https://"+"hook"+".us2.make."+"com/yhtygrljyvfi3rl16ihv6b9bg1isl543";
 let e=false, pName="", pPhone="", bType="", bSub="변경", selTime="";
 const bookedSlots=["10:00 AM","01:30 PM","03:00 PM"];
-const holidays={"01-01":"신정 (New Year's Day)","05-25":"메모리얼 데이 (Memorial Day)","07-04":"독립기념일 (Independence Day)","09-07":"노동절 (Labor Day)","11-26":"추수감사절 (Thanksgiving)","12-25":"성탄절 (Christmas Day)"};
+const holidays={"2026-01-01":"신정 (New Year's Day)","2026-05-25":"메모리얼 데이 (Memorial Day)","2026-07-04":"독립기념일 (Independence Day)","2026-09-07":"노동절 (Labor Day)","2026-11-26":"추수감사절 (Thanksgiving)","2026-12-25":"성탄절 (Christmas Day)","2027-01-01":"신정 (New Year's Day)","2027-05-31":"메모리얼 데이 (Memorial Day)","2027-07-04":"독립기념일 (Independence Day)","2027-09-06":"노동절 (Labor Day)","2027-11-25":"추수감사절 (Thanksgiving)","2027-12-25":"성탄절 (Christmas Day)"};
+function dstr(d){const p=n=>String(n).padStart(2,"0");return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());}
 
 function tl(){
   e=!e;
@@ -86,6 +110,7 @@ function tl(){
   document.getElementById("cn").innerText=e?"St. Thomas Medical Clinic":"성토마스 병원";
   document.getElementById("cs").innerText=e?"Family Medicine & Geriatrics • Santa Clara":"St. Thomas Medical Clinic • 가정의학·노인의학";
   document.getElementById("dh").innerHTML=e?"👨‍⚕️ <strong>Dr. Peter K. Chung, DO</strong><br>🕒 Mon-Fri 9:00 AM - 4:30 PM | 1st Sat 9:00 AM - 1:00 PM (Closed Sun & Holidays)":"👨‍⚕️ <strong>Dr. Peter K. Chung, DO</strong><br>🕒 평일 9:00 AM - 4:30 PM | 매월 첫째 토요일 9:00 AM - 1:00 PM (일·공휴일 휴진)";
+  document.getElementById("emg").innerHTML=e?"🚨 In an emergency (chest pain, difficulty breathing, etc.), call <strong>911</strong>. This chat is not for emergencies.":"🚨 응급 상황(가슴 통증, 호흡 곤란 등)인 경우 <strong>911</strong>에 전화하세요. 이 채팅은 응급 용도가 아닙니다.";
   document.getElementById("it").innerHTML=e?"📲 Install Clinic App<br>on Home Screen":"📲 스마트폰 바탕화면에<br>성토마스 병원 앱 설치하기";
   document.getElementById("ib").innerText=e?"Install App":"1초 앱 설치";
   document.getElementById("ct").innerText=e?"Call Clinic":"전화 연결";
@@ -97,6 +122,14 @@ function tl(){
   document.getElementById("c3").innerText=e?"🔄 Change / Check Appt":"🔄 기존예약 변경/확인";
   document.getElementById("c4").innerText=e?"🇰🇷 한국어":"🇺🇸 English";
   document.getElementById("ui").placeholder=e?"Type a message or use mic/camera...":"메시지 또는 마이크/카메라...";
+  document.getElementById("addrT").innerText=e?"📍 Visit Us":"📍 오시는 길";
+  document.getElementById("addrN").innerText=e?"Parking available · Wheelchair accessible":"주차 가능 · 휠체어 이용 가능";
+  document.getElementById("svcT").innerText=e?"🩺 Our Services":"🩺 진료 안내";
+  document.getElementById("svcD").innerHTML=e?"Family medicine · Geriatrics · Preventive exams<br>Immigration physicals (I-693) · Vaccinations · Blood tests<br>X-ray · EKG · Ultrasound<br>Accepting new patients · Telehealth available":"가정의학 진료 · 노인 진료 · 예방 검진<br>이민 신체검사 (I-693) · 예방접종 · 혈액검사<br>X-ray · 심전도(EKG) · 초음파<br>신규 환자 환영 · Telehealth(원격진료) 가능";
+  document.getElementById("insT").innerText=e?"🏥 Insurance Accepted":"🏥 받는 보험";
+  document.getElementById("insD").innerHTML=e?"Aetna · Blue Cross Blue Shield · Blue Shield of California<br>UnitedHealthcare · Anthem · Cigna · Humana<br>Other major plans accepted.<br><span style='font-size:13px;color:#64748b'>Please call to confirm your coverage before your visit.</span>":"Aetna · Blue Cross Blue Shield · Blue Shield of California<br>UnitedHealthcare · Anthem · Cigna · Humana<br>그 외 주요 보험도 가능합니다.<br><span style='font-size:13px;color:#64748b'>가입하신 보험의 적용 여부는 예약 전 전화로 확인해 주세요.</span>";
+  document.getElementById("prv").innerText=e?"The name, phone number and photos you enter are used only for your appointment request and sent to our clinic desk.":"입력하신 이름·연락처·사진은 진료 접수 목적으로만 사용되며 병원 데스크로 전송됩니다.";
+  document.getElementById("prv2").innerText=e?"If you don't receive a confirmation text after submitting, please call us at (650) 830-8223.":"접수 후 확인 문자가 오지 않으면 (650) 830-8223으로 전화 주세요.";
   document.getElementById("imt").innerText=e?"📲 Install Clinic App":"📲 병원 앱 설치 안내";
   document.getElementById("imd").innerHTML=e?"<strong>iPhone:</strong> Tap [Share ⬆️] → [Add to Home Screen]<br><strong>Android:</strong> Tap [Menu ⋮] → [Add to Home screen]":"<strong>아이폰:</strong> 하단 [공유 ⬆️] → [홈 화면에 추가]<br><strong>안드로이드:</strong> 우측 상단 [메뉴 ⋮] → [홈 화면에 추가]";
   document.getElementById("imc").innerText=e?"OK":"확인";
@@ -104,13 +137,20 @@ function tl(){
   document.getElementById("rn").placeholder=e?"Patient Full Name (e.g., John Doe)":"환자분 성함 (예: 김명희)";
   document.getElementById("rp").placeholder=e?"Phone Number (e.g., 408-123-4567)":"연락처 (예: 408-123-4567)";
   document.getElementById("rmb").innerText=e?"📷 Next: Take Photo of Rx Bottle":"📷 다음: 약통 사진 촬영하기";
+  document.getElementById("rnote").innerText=e?"We will text you to confirm. If you don't receive a text, please call (650) 830-8223.":"접수 후 확인 문자를 드립니다. 문자가 오지 않으면 (650) 830-8223으로 전화 주세요.";
   document.getElementById("rmc").innerText=e?"Cancel":"취소";
   document.getElementById("bn").placeholder=e?"Patient Full Name (e.g., John Doe)":"환자분 성함 (예: 김명희)";
   document.getElementById("bp").placeholder=e?"Phone Number (e.g., 408-123-4567)":"연락처 (예: 408-123-4567)";
   document.getElementById("bdl").innerText=e?"1. Select Date (Calendar)":"1. 희망 날짜 선택 (달력)";
   document.getElementById("btl").innerText=e?"2. Available Times (Gray = Booked)":"2. 예약 가능 시간 (회색은 예약 마감)";
   document.getElementById("bmb").innerText=e?"✅ Submit Request":"✅ 요청 접수하기";
+  document.getElementById("bnote").innerText=e?"If you don't receive a confirmation text after submitting, please call us at (650) 830-8223.":"접수 후 확인 문자가 오지 않으면 (650) 830-8223으로 전화 주세요.";
   document.getElementById("bmc").innerText=e?"Cancel":"취소";
+  document.getElementById("bs1").innerText=e?"🔄 Reschedule":"🔄 예약 변경";
+  document.getElementById("bs2").innerText=e?"🔍 Request Appt Info":"🔍 예약 일정 문의";
+  document.getElementById("bs3").innerText=e?"❌ Cancel Appt":"❌ 예약 취소";
+  const isChg=bType.includes("변경")||bType.includes("Change");
+  document.getElementById("bt").innerText="📅 "+(isChg?(e?"Change / Check Appt":"기존예약 변경/확인"):(e?"New Appointment":"신규 진료 예약"));
 }
 
 function sq(t){document.getElementById("ui").value=t;sm()}
@@ -125,8 +165,8 @@ function goCam(){
 
 function isFirstSat(d){return d.getDay()===6 && d.getDate()<=7;}
 function getDayStatus(dtStr){
-  const d=new Date(dtStr+"T00:00:00"), day=d.getDay(), mmdd=dtStr.slice(5);
-  const hName=holidays[mmdd];
+  const d=new Date(dtStr+"T00:00:00"), day=d.getDay();
+  const hName=holidays[dtStr];
   if(hName)return {closed:true,msg:e?`Closed on ${hName}`:`${hName} 공휴일 휴진`};
   if(day===0)return {closed:true,msg:e?"Closed on Sundays":"매주 일요일 휴진"};
   if(day===6){
@@ -158,10 +198,10 @@ function openBk(t){
   document.getElementById("bs3").innerText=e?"❌ Cancel Appt":"❌ 예약 취소";
   if(isChange){setSub("변경");}else{document.getElementById("bdtbox").style.display="block";}
   const d=new Date(); d.setDate(d.getDate()+1);
-  while(getDayStatus(d.toISOString().split("T")).closed){d.setDate(d.getDate()+1);}
+  while(getDayStatus(dstr(d)).closed){d.setDate(d.getDate()+1);}
   const inp=document.getElementById("bdate");
-  inp.min=new Date().toISOString().split("T");
-  inp.value=d.toISOString().split("T");
+  inp.min=dstr(new Date());
+  inp.value=dstr(d);
   renderSlots();
   document.getElementById("bm").style.display="flex";
 }
@@ -192,6 +232,7 @@ function sendBk(){
   const isChange=(bType.includes("변경")||bType.includes("Change"));
     const needDate=(!isChange || bSub==="변경");
   if(needDate){
+    if(!dt){alert(e?"Please select a date.":"날짜를 선택해 주세요.");return;}
     if(getDayStatus(dt).closed){alert(e?"Cannot book on closed days.":"휴진일에는 예약할 수 없습니다.");return;}
     if(!selTime){alert(e?"Please select an available time slot.":"예약 가능한 시간을 선택해 주세요.");return;}
   }
@@ -267,4 +308,3 @@ function ab(t,c){
 </script>
 </body>
 </html>
-
