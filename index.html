@@ -73,7 +73,8 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 </div>
 <div class="mod" id="im"><div class="mc"><h3 id="imt" style="margin-bottom:10px;color:#0f4c81">📲 병원 앱 설치 안내</h3><p id="imd" style="font-size:14px;line-height:1.5;margin-bottom:16px"><strong>아이폰:</strong> 하단 [공유 ⬆️] → [홈 화면에 추가]<br><strong>안드로이드:</strong> 우측 상단 [메뉴 ⋮] → [홈 화면에 추가]</p><button id="imc" onclick="document.getElementById('im').style.display='none'" style="background:#0f4c81;color:#fff;border:none;padding:10px;border-radius:10px;width:100%;font-weight:700">확인</button></div></div>
 <div class="mod" id="rm"><div class="mc" style="width:100%"><h3 id="rmt" style="margin-bottom:12px;color:#0f4c81">💊 약통 찍어 처방연장</h3><input type="text" id="rn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="rp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:14px"><button id="rmb" onclick="goCam()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:8px;cursor:pointer">📷 다음: 약통 사진 촬영하기</button><button id="rmc" onclick="document.getElementById('rm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:10px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
-<div class="mod" id="bm"><div class="mc" style="width:100%;text-align:left"><h3 id="bt" style="margin-bottom:10px;color:#0f4c81;text-align:center">📅 진료 예약 접수</h3><input type="text" id="bn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="bp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><div id="bdl" style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">1. 희망 날짜 선택 (달력)</div><input type="date" id="bdate" onchange="renderSlots()" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:10px"><div id="btl" style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">2. 예약 가능 시간 (회색은 예약 마감)</div><div id="tslots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px"></div><button id="bmb" onclick="sendBk()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:6px;cursor:pointer">✅ 선택한 시간으로 예약 접수</button><button id="bmc" onclick="document.getElementById('bm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:9px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
+<div class="mod" id="bm"><div class="mc" style="width:100%;text-align:left"><h3 id="bt" style="margin-bottom:10px;color:#0f4c81;text-align:center">📅 진료 예약 접수</h3><div id="bsub" style="display:none;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px"><button type="button" id="bs1" onclick="setSub('변경')" style="padding:8px 4px;border-radius:8px;font-size:12px;font-weight:800;border:1.5px solid #0f4c81;background:#0f4c81;color:#fff;cursor:pointer">🔄 예약 변경</button><button type="button" id="bs2" onclick="setSub('확인')" style="padding:8px 4px;border-radius:8px;font-size:12px;font-weight:800;border:1.5px solid #93c5fd;background:#eff6ff;color:#0f4c81;cursor:pointer">🔍 일정 확인</button><button type="button" id="bs3" onclick="setSub('취소')" style="padding:8px 4px;border-radius:8px;font-size:12px;font-weight:800;border:1.5px solid #93c5fd;background:#eff6ff;color:#0f4c81;cursor:pointer">❌ 예약 취소</button></div><input type="text" id="bn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="bp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><div id="bdtbox"><div id="bdl" style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">1. 희망 날짜 선택 (달력)</div><input type="date" id="bdate" onchange="renderSlots()" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:10px"><div id="btl" style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">2. 예약 가능 시간 (회색은 예약 마감)</div><div id="tslots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px"></div></div><button id="bmb" onclick="sendBk()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:6px;cursor:pointer">✅ 선택한 시간으로 예약 접수</button><button id="bmc" onclick="document.getElementById('bm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:9px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
+
 <script>
 const W="https://"+"hook"+".us2.make."+"com/yhtygrljyvfi3rl16ihv6b9bg1isl543";
 let e=false, pName="", pPhone="", bType="", selTime="";
@@ -136,49 +137,55 @@ function getDayStatus(dtStr){
   return {closed:false,sat:false};
 }
 
+let bSub="변경";
+function setSub(s){
+  bSub=s;
+  const map={"변경":"bs1","확인":"bs2","취소":"bs3"};
+  ["bs1","bs2","bs3"].forEach(id=>{
+    const el=document.getElementById(id), act=(map[s]===id);
+    el.style.background=act?"#0f4c81":"#eff6ff";
+    el.style.color=act?"#fff":"#0f4c81";
+    el.style.borderColor=act?"#0f4c81":"#93c5fd";
+  });
+  document.getElementById("bdtbox").style.display=(s==="변경")?"block":"none";
+}
+
 function openBk(t){
   bType=t; selTime="";
   document.getElementById("bt").innerText="📅 "+t;
+  const isChange=(t.includes("변경")||t.includes("Change"));
+  document.getElementById("bsub").style.display=isChange?"grid":"none";
+  document.getElementById("bs1").innerText=e?"🔄 Reschedule":"🔄 예약 변경";
+  document.getElementById("bs2").innerText=e?"🔍 Check Appt":"🔍 일정 확인";
+  document.getElementById("bs3").innerText=e?"❌ Cancel Appt":"❌ 예약 취소";
+  if(isChange){setSub("변경");}else{document.getElementById("bdtbox").style.display="block";}
   const d=new Date(); d.setDate(d.getDate()+1);
-  while(getDayStatus(d.toISOString().split("T")).closed){d.setDate(d.getDate()+1);}
+  while(getDayStatus(d.toISOString().split("T")[0]).closed){d.setDate(d.getDate()+1);}
   const inp=document.getElementById("bdate");
-  inp.min=new Date().toISOString().split("T");
-  inp.value=d.toISOString().split("T");
+  inp.min=new Date().toISOString().split("T")[0];
+  inp.value=d.toISOString().split("T")[0];
   renderSlots();
   document.getElementById("bm").style.display="flex";
-}
-
-function renderSlots(){
-  const dt=document.getElementById("bdate").value, box=document.getElementById("tslots");
-  box.innerHTML="";
-  const st=getDayStatus(dt);
-  if(st.closed){
-    selTime="";
-    box.innerHTML=`<div style="grid-column:1/-1;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;padding:12px;border-radius:10px;font-size:13px;font-weight:700;text-align:center">🚫 ${st.msg}<br><span style="font-weight:400;font-size:12px">${e?"Please select another available date.":"다른 진료일을 선택해 주세요."}</span></div>`;
-    return;
-  }
-  const times=st.sat?["09:00 AM","09:30 AM","10:00 AM","10:30 AM","11:00 AM","11:30 AM","12:00 PM","12:30 PM"]:["09:00 AM","09:30 AM","10:00 AM","10:30 AM","11:00 AM","01:30 PM","02:00 PM","02:30 PM","03:00 PM","03:30 PM","04:00 PM"];
-  times.forEach(tm=>{
-    const isBooked=bookedSlots.includes(tm), btn=document.createElement("button");
-    btn.innerText=isBooked?tm+(e?" (Booked)":" (마감)"):tm;
-    btn.disabled=isBooked;
-    btn.style.cssText=`padding:9px 4px;border-radius:8px;font-size:12px;font-weight:700;border:1.5px solid ${isBooked?"#e2e8f0":(selTime===tm?"#0f4c81":"#93c5fd")};background:${isBooked?"#f1f5f9":(selTime===tm?"#0f4c81":"#eff6ff")};color:${isBooked?"#94a3b8":(selTime===tm?"#fff":"#0f4c81")};cursor:${isBooked?"not-allowed":"pointer"}`;
-    btn.onclick=()=>{selTime=tm;renderSlots();};
-    box.appendChild(btn);
-  });
 }
 
 function sendBk(){
   const n=document.getElementById("bn").value.trim(), p=document.getElementById("bp").value.trim(), dt=document.getElementById("bdate").value;
   if(!n||!p){alert(e?"Please enter your name and phone number.":"성함과 연락처를 입력해 주세요.");return;}
-  if(getDayStatus(dt).closed){alert(e?"Cannot book on closed days. Please select a business day.":"휴진일에는 예약할 수 없습니다.");return;}
-  if(!selTime){alert(e?"Please select an available time slot.":"예약 가능한 시간을 선택해 주세요.");return;}
-  const msg=`📅 [${bType}] 환자: ${n} / 연락처: ${p} / 확정요청일시: ${dt} ${selTime}`;
+  const isChange=(bType.includes("변경")||bType.includes("Change"));
+  const needDate=(!isChange || bSub==="변경");
+  if(needDate){
+    if(getDayStatus(dt).closed){alert(e?"Cannot book on closed days.":"휴진일에는 예약할 수 없습니다.");return;}
+    if(!selTime){alert(e?"Please select an available time slot.":"예약 가능한 시간을 선택해 주세요.");return;}
+  }
+  const label=isChange?`기존예약 ${bSub}`:bType;
+  const timeInfo=needDate?` / 희망일시: ${dt} ${selTime}`:"";
+  const msg=`📅 [${label}] 환자: ${n} / 연락처: ${p}${timeInfo}`;
   document.getElementById("bm").style.display="none";
-  ab(e?`📅 [${bType}] Name: ${n} / Phone: ${p} / Requested: ${dt} ${selTime}`:msg,"musr");
+  ab(e?`📅 [${label}] Name: ${n} / Phone: ${p}${needDate?` / Date: ${dt} ${selTime}`:""}`:msg,"musr");
   send(msg,"");
-  setTimeout(()=>{ab(e?`✅ Thank you, <strong>${n}</strong>! Your request for ${dt} at <strong>${selTime}</strong> has been sent to our desk. We will text you to confirm shortly. 😊`:`✅ <strong>${n}님</strong>의 ${dt} <strong>${selTime}</strong> ${bType} 요청이 데스크로 전송되었습니다! 확인 후 확정 문자를 드립니다. 😊`,"mai")},500);
+  setTimeout(()=>{ab(e?`✅ Thank you, <strong>${n}</strong>! Your <strong>${label}</strong> request has been sent to our desk. 😊`:`✅ <strong>${n}님</strong>의 <strong>${label}</strong> 요청이 데스크로 전송되었습니다! 확인 후 문자로 안내해 드립니다. 😊`,"mai")},500);
 }
+
 
 function send(m,img){
   const d=new URLSearchParams();
