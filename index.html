@@ -203,7 +203,47 @@ function hp(inp){
       c.width=500; c.height=im.height*s;
       c.getContext("2d").drawImage(im,0,0,c.width,c.height);
       const smallImg=c.toDataURL("image/jpeg",0.7);
-      const info=`💊 [약통 처방연장] 환자: ${pName} (${pPhone})`;
+            const info=`💊 [약통 처방연장] 환자: ${pName} (${pPhone})`;
+      ab(`<img src='${smallImg}' style='max-width:100%;border-radius:10px;margin-bottom:4px'><br>${e?`💊 [Rx Refill] Patient: ${pName} (${pPhone})`:info}`,"musr");
+      send(info, smallImg);
+      setTimeout(()=>{ab(e?`💊 Thank you, <strong>${pName}</strong>! Your prescription bottle photo and contact info have been sent to our desk. 😊`:`💊 <strong>${pName}님</strong>의 약통 사진과 연락처가 데스크로 한 번에 접수되었습니다! 😊`,"mai")},600);
+    };
+    im.src=ev.target.result;
+  };
+  r.readAsDataURL(inp.files[0]);
+}
+
+function sv(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){alert(e?"Please use the microphone button on your phone keyboard.":"스마트폰 키보드의 마이크 버튼을 눌러 말씀해 주세요!");return;}
+  const r=new SR(); r.lang=e?"en-US":"ko-KR";
+  const b=document.getElementById("mb"); b.style.background="#fee2e2";
+  r.onresult=ev=>{document.getElementById("ui").value=ev.results[0][0].transcript;sm()};
+  r.onend=()=>{b.style.background="#e0f2fe"};
+  r.start();
+}
+
+function sm(){
+  const i=document.getElementById("ui"), t=i.value.trim();
+  if(!t)return;
+  ab(t,"musr"); send(t,""); i.value="";
+  setTimeout(()=>{
+    let r=e?"Thank you! Your message has been sent to our desk. 😊 For urgent matters, please tap [Call Clinic].":"감사합니다! 데스크 담당자에게 전달되었습니다. 😊 급하신 용무는 [전화 연결]을 눌러주세요.";
+    const l=t.toLowerCase();
+    if(l.includes("신규")||l.includes("예약")||l.includes("appointment"))r=e?"📅 Please tap the <strong>[🆕 New Appointment]</strong> button above to pick a date and available time slot!":"📅 위의 <strong>[🆕 신규 진료 예약]</strong> 버튼을 누르시면 달력에서 날짜와 시간을 바로 선택하실 수 있습니다!";
+    else if(l.includes("약")||l.includes("refill"))r=e?"💊 Please tap <strong>[📷 Rx Refill (Photo)]</strong> above to snap a photo of your prescription bottle!":"💊 위의 <strong>[📷 약통 찍어 처방연장]</strong> 버튼을 누르시면 성함 입력 후 바로 촬영하여 한 번에 접수됩니다!";
+    ab(r,"mai");
+  },500);
+}
+
+function ab(t,c){
+  const b=document.getElementById("cb"), d=document.createElement("div");
+  d.className="msg "+c; d.innerHTML=t; b.appendChild(d); b.scrollTop=b.scrollHeight;
+}
+</script>
+</body>
+</html>
+
       ab(`<img src='${smallImg}' style='max-width:100%;border-radius:10px;margin-bottom:4px'><br>${e?`💊 [Rx Refill] Patient: ${pName} (${pPhone})`:info}`,"musr");
       send(info, smallImg);
       setTimeout(()=>{ab(e?`💊 Thank you, <strong>${pName}</strong>! Your prescription bottle photo and contact info have been sent to our desk. 😊`:`💊 <strong>${pName}님</strong>의 약통 사진과 연락처가 데스크로 한 번에 접수되었습니다! 😊`,"mai")},600);
