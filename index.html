@@ -61,11 +61,11 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 <div class="chead">🤖 성토마스 24시 AI 안내 비서 <span style="color:#16a34a;font-size:12px">● 온라인</span></div>
 <div class="cmsg" id="cb"><div class="msg mai">안녕하세요! 성토마스 병원 AI 비서입니다. 😊<br><strong>진료 예약, 약통 촬영 처방연장(Refill), 예약 변경</strong>을 도와드립니다.</div></div>
 <div class="chips">
-<button class="chip" onclick="startCam()">📷 약통 찍어 처방연장</button>
-<button class="chip" onclick="openBk('신규 진료 예약')">🆕 신규 진료 예약</button>
-<button class="chip" onclick="openBk('기존 예약 변경/확인')">🔄 기존예약 변경/확인</button>
+<button class="chip" id="c1" onclick="startCam()">📷 약통 찍어 처방연장</button>
+<button class="chip" id="c2" onclick="openBk(e?'New Appointment':'신규 진료 예약')">🆕 신규 진료 예약</button>
+<button class="chip" id="c3" onclick="openBk(e?'Change / Check Appt':'기존예약 변경/확인')">🔄 기존예약 변경/확인</button>
+<button class="chip" id="c4" onclick="tl()">🇺🇸 English</button>
 
-<button class="chip" onclick="sq('Book an appointment in English')">🇺🇸 English</button>
 </div>
 <div class="ibox">
 <input type="file" id="cam" accept="image/*" capture="environment" style="display:none" onchange="hp(this)">
@@ -83,7 +83,22 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 <script>
 const W="https://"+"hook"+".us2.make."+"com/yhtygrljyvfi3rl16ihv6b9bg1isl543";
 let e=false, pName="", pPhone="";
-function tl(){e=!e;document.getElementById("lb").innerText=e?"한국어":"English";document.getElementById("cn").innerText=e?"St. Thomas Medical Clinic":"성토마스 병원";document.getElementById("it").innerHTML=e?"📲 Install Clinic App<br>on Home Screen":"📲 스마트폰 바탕화면에<br>성토마스 병원 앱 설치하기";document.getElementById("ib").innerText=e?"Install App":"1초 앱 설치";document.getElementById("ct").innerText=e?"Call Clinic":"전화 연결";document.getElementById("mt").innerText=e?"Directions":"오시는 길"}
+function tl(){
+  e=!e;
+  document.getElementById("lb").innerText=e?"한국어":"English";
+  document.getElementById("cn").innerText=e?"St. Thomas Medical Clinic":"성토마스 병원";
+  document.getElementById("cs").innerText=e?"Family Medicine & Geriatrics • Santa Clara":"St. Thomas Medical Clinic • 가정의학·노인의학";
+  document.getElementById("it").innerHTML=e?"📲 Install Clinic App<br>on Home Screen":"📲 스마트폰 바탕화면에<br>성토마스 병원 앱 설치하기";
+  document.getElementById("ib").innerText=e?"Install App":"1초 앱 설치";
+  document.getElementById("ct").innerText=e?"Call Clinic":"전화 연결";
+  document.getElementById("mt").innerText=e?"Directions":"오시는 길";
+  document.getElementById("c1").innerText=e?"📷 Rx Refill (Photo)":"📷 약통 찍어 처방연장";
+  document.getElementById("c2").innerText=e?"🆕 New Appointment":"🆕 신규 진료 예약";
+  document.getElementById("c3").innerText=e?"🔄 Change / Check Appt":"🔄 기존예약 변경/확인";
+  document.getElementById("c4").innerText=e?"🇰🇷 한국어":"🇺🇸 English";
+  document.getElementById("ui").placeholder=e?"Type a message or use mic/camera...":"메시지 또는 마이크/카메라...";
+}
+
 function sq(t){document.getElementById("ui").value=t;sm()}
 function startCam(){
   document.getElementById("rm").style.display="flex";
