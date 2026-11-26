@@ -78,10 +78,7 @@ h1{font-size:23px;font-weight:800;margin-bottom:4px}
 <button class="sbtn" onclick="sm()">↑</button>
 </div>
 </div>
-<div class="mod" id="im"><div class="mc"><h3 id="imt" style="margin-bottom:10px;color:#0f4c81">📲 병원 앱 설치 안내</h3><p id="imd" style="font-size:14px;line-height:1.5;margin-bottom:16px"><strong>아이폰:</strong> 하단 [공유 ⬆️] → [홈 화면에 추가]<br><strong>안드로이드:</strong> 우측 상단 [메뉴 ⋮] → [홈 화면에 추가]</p><button id="imc" onclick="document.getElementById('im').style.display='none'" style="background:#0f4c81;color:#fff;border:none;padding:10px;border-radius:10px;width:100%;font-weight:700">확인</button></div></div>
-<div class="mod" id="rm"><div class="mc" style="width:100%"><h3 id="rmt" style="margin-bottom:12px;color:#0f4c81">💊 약통 찍어 처방연장</h3><input type="text" id="rn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="rp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:14px"><button id="rmb" onclick="goCam()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:8px;cursor:pointer">📷 다음: 약통 사진 촬영하기</button><button id="rmc" onclick="document.getElementById('rm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:10px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
 <div class="mod" id="bm"><div class="mc" style="width:100%;text-align:left"><h3 id="bt" style="margin-bottom:10px;color:#0f4c81;text-align:center">📅 진료 예약 접수</h3><input type="text" id="bn" placeholder="환자분 성함 (예: 김명희)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><input type="tel" id="bp" placeholder="연락처 (예: 408-123-4567)" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:8px"><div id="bdl" style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">1. 희망 날짜 선택 (달력)</div><input type="date" id="bdate" onchange="renderSlots()" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;margin-bottom:10px"><div id="btl" style="font-size:12px;font-weight:700;color:#475569;margin-bottom:4px">2. 예약 가능 시간 (회색은 예약 마감)</div><div id="tslots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px"></div><button id="bmb" onclick="sendBk()" style="background:#0f4c81;color:#fff;border:none;padding:13px;border-radius:12px;width:100%;font-weight:800;font-size:15px;margin-bottom:6px;cursor:pointer">✅ 선택한 시간으로 예약 접수</button><button id="bmc" onclick="document.getElementById('bm').style.display='none'" style="background:#f1f5f9;color:#64748b;border:none;padding:9px;border-radius:10px;width:100%;font-weight:700">취소</button></div></div>
-
 <script>
 const W="https://"+"hook"+".us2.make."+"com/yhtygrljyvfi3rl16ihv6b9bg1isl543";
 let e=false, pName="", pPhone="", bType="", selTime="";
@@ -209,31 +206,3 @@ function hp(inp){
       const wrap=document.createElement("div");
       wrap.appendChild(imgTag);
       wrap.insertAdjacentHTML("beforeend","<br>"+(e?`💊 [Rx Refill] Patient: ${pName} (${pPhone})`:info));
-      const b=document.getElementById("cb"), d=document.createElement("div");
-      d.className="msg musr"; d.appendChild(wrap); b.appendChild(d); b.scrollTop=b.scrollHeight;
-      send(info, smallImg);
-      setTimeout(()=>{ab(e?`💊 Thank you, <strong>${pName}</strong>! Your prescription bottle photo and contact info have been sent to our desk. 😊`:`💊 <strong>${pName}님</strong>의 약통 사진과 연락처가 데스크로 한 번에 접수되었습니다! 😊`,"mai")},600);
-    };
-    im.src=ev.target.result;
-  };
-  r.readAsDataURL(inp.files[0]);
-}
-
-function sv(){
-  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(!SR){alert(e?"Please use the microphone button on your phone keyboard.":"스마트폰 키보드의 마이크 버튼을 눌러 말씀해 주세요!");return;}
-  const r=new SR(); r.lang=e?"en-US":"ko-KR";
-  const b=document.getElementById("mb"); b.style.background="#fee2e2";
-  r.onresult=ev=>{document.getElementById("ui").value=ev.results[0][0].transcript;sm()};
-  r.onend=()=>{b.style.background="#e0f2fe"};
-  r.start();
-}
-
-function sm(){
-  const i=document.getElementById("ui"), t=i.value.trim();
-  if(!t)return;
-  ab(t,"musr"); send(t,""); i.value="";
-  setTimeout(()=>{
-    let r=e?"Thank you! Your message has been sent to our desk. 😊 For urgent matters, please tap [Call Clinic].":"감사합니다! 데스크 담당자에게 전달되었습니다. 😊 급하신 용무는 [전화 연결]을 눌러주세요.";
-    const l=t.toLowerCase();
-
