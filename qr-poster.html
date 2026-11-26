@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- 병원 앱 QR 포스터 (A4 인쇄용) — 접수처·대기실에 붙이는 것
+     병원마다 바꾸는 것: QR 이미지(아래 data URI), 병원 이름, 전화번호, 주소.
+     QR 재생성: https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=10&data=<앱 주소 URL 인코딩>
+     또는 qr-code.png 파일을 교체하고 이 파일의 data URI도 같은 PNG로 교체한다.
+     앱 주소는 템플릿 index.html의 CONFIG.appUrl과 같아야 한다. -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>성토마스 병원 앱 설치 안내</title>
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,"Malgun Gothic",sans-serif}
+body{width:210mm;min-height:297mm;padding:18mm 16mm 12mm;text-align:center;color:#1f2937}
+h1{font-size:44pt;font-weight:800;color:#0f4c81;line-height:1.2}
+.sub{font-size:20pt;color:#475569;margin-top:6px}
+.qr{margin:14mm auto 8mm;width:105mm;height:105mm;border:6px solid #0f4c81;border-radius:18px;padding:6mm}
+.qr img{width:100%;height:100%}
+.how{font-size:22pt;font-weight:800;color:#0f4c81}
+.steps{text-align:left;max-width:160mm;margin:8mm auto 0;font-size:19pt;line-height:2.1}
+.steps b{color:#0f4c81}
+.note{margin-top:10mm;font-size:15pt;color:#64748b;line-height:1.7}
+.foot{margin-top:8mm;font-size:16pt;line-height:1.8;border-top:2px solid #e5e7eb;padding-top:6mm}
+.foot b{color:#0f4c81}
+@media print{body{padding-top:16mm}}
+</style>
+</head>
+<body>
+<h1>성토마스 병원 앱</h1>
+<div class="sub">예약 · 처방연장 · 진료 안내를 휴대폰으로</div>
+<div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYAQMAAACEqAqfAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACLUlEQVR4nO3ZTY6kMAwGUCQOxtU5WKSMpvhxYtKlWYbp9y1ahNgPdu5QyyLyG7PVlPL37lrrfuxfV9u98SkZtrFYLBZrZqssTba7cM99pS95trFYLBZrdiuqz5r1uNGMjSQM21gsFov1Lms7mLUdIMu93FksFov1n1jtdIhlpLBYLBbrnVZkawpjI02MMm5jsVgs1tRWSnm0jP8821gsFos1sfU90XfOjn/sY7FYLNZs1rl91YyXn+brwND+KtD9PsBisVisqa2YDvEJqN59UXKBtX9clLBYLBZrYiulVa++ZjoM/Z/CYrFYrImsuNnuBHP5tZ8d384KLBaLxZrQStupcLyx9M8sy+AdWCwWizWXdY6N+qiOjcdyvctLq7BYLBZrYiuSTg1bU1j75rV26RkWi8ViTWqtbU07O2p7VZsZk16kOT+wWCwWa2rrbImxkdJNjL1n8uxgsVgs1pTWdl9ufeHWMNH3fEi8AovFYrHmt7oBMj4/pENE6lhYLBaL9QbrB+acDt2cOJMex2KxWKxXWF3fnpkr+9ER6Z7EYrFYrImtUQJMJ4Q0QJLKYrFYrImtdh3V9fr3PzMdGMunzWKxWKzZrG6CfF+2X4S63e2cHSwWi8Wa2nrMhHL3ddmPvjRoCovFYrFebG1H8/Pb0Jnry1GoLBaLxXqdVW+hmyKt2uWzwWKxWKzZrch4bJS27lGyslgsFusNVkpXGPfSAFkGD2GxWCzWxJbI78sflHteXu08+IYAAAAASUVORK5CYII=" alt="성토마스 병원 앱 QR 코드"></div>
+<div class="how">📷 스마트폰 카메라로 이 코드를 찍으세요</div>
+<div class="steps">
+<b>1.</b> 카메라를 켜서 위 QR 코드를 비추세요<br>
+<b>2.</b> 화면에 뜨는 링크를 누르면 병원 앱이 열립니다<br>
+<b>3.</b> 앱이 열리면 위쪽 <b>[앱 설치하기]</b> 안내를 따라하세요<br>
+&nbsp;&nbsp;&nbsp;&nbsp;아이폰: 공유 ⬆️ → 홈 화면에 추가<br>
+&nbsp;&nbsp;&nbsp;&nbsp;안드로이드: 메뉴 ⋮ → 홈 화면에 추가
+</div>
+<div class="note">어려우시면 자녀분이나 가족이 도와드릴 수 있어요.<br>접수처에서도 설치를 도와드립니다.</div>
+<div class="foot">
+<b>성토마스 병원</b> · (650) 830-8223<br>
+1470 Halford Ave #168, Santa Clara, CA 95051
+</div>
+</body>
+</html>
